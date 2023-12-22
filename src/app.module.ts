@@ -14,7 +14,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
     AuthModule, 
     UsersModule,
-    MongooseModule.forRoot(process.env.MONGODB_URI),
+    MongooseModule.forRoot(process.env.MONGO_PRIVATE_URL),
   ],
   controllers: [AppController],
   providers: [AppService],
