@@ -3,7 +3,10 @@ import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from 'src/users/users.service';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { User } from 'src/users/schemas/user.schema';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -12,6 +15,11 @@ export class AuthController {
   ) {}
   
     @UseGuards(AuthGuard('local'))
+    @ApiResponse({
+      status: 200,
+      description: 'Login Successfully',
+      type: User,
+    })
     @Post('login')
     async login(@Request() req, @Res() res) {
       res.status(HttpStatus.OK).json(req.user);
