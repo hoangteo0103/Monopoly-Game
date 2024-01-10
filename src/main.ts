@@ -4,7 +4,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 3000;
+  app.enableCors();
+  const port = 3001;
   const config = new DocumentBuilder()
     .setTitle('Taisiu game')
     .setDescription('The monopoly game API description')
