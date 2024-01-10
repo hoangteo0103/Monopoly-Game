@@ -3,7 +3,7 @@ import { Socket } from 'socket.io';
 import { SocketService } from './socket.service';
 import { GameService } from './game.service';
 
-@WebSocketGateway(3000)
+@WebSocketGateway()
 export class SocketGateway implements OnGatewayConnection {
   @WebSocketServer()
   private server: Socket;
