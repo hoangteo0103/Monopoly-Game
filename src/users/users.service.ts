@@ -13,6 +13,9 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     const createdUser = new this.userModel(createUserDto);
+
+    createdUser.coins = 0;
+    createdUser.skins = [];
     return createdUser.save();
   }
 
@@ -22,5 +25,10 @@ export class UsersService {
       .aggregate([{ $match: { email: email } }])
       .exec();
     return data[0];
+  }
+
+  async findById(id: string): Promise<UserDocument> {
+    const data = await this.userModel.findById(id).exec();
+    return data;
   }
 }

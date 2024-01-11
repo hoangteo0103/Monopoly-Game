@@ -29,6 +29,12 @@ export class User {
     },
   })
   name?: string;
+
+  @Prop({ required: false, unique: false })
+  coins?: number;
+
+  @Prop({ required: false, unique: false })
+  skins?: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

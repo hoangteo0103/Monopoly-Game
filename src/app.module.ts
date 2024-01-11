@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { SocketModule } from './socket/socket.module';
+import { SkinModule } from './skin/skin.module';
 
 @Module({
   
@@ -17,6 +18,7 @@ import { SocketModule } from './socket/socket.module';
     UsersModule,
     MongooseModule.forRoot(process.env.MONGO_PRIVATE_URL),
     SocketModule,
+    SkinModule,
   ],
   controllers: [AppController],
   providers: [AppService],
