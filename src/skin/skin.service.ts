@@ -13,8 +13,9 @@ export class SkinService {
         const user = await this.usersService.findById(userID);
         if(user.skins.includes(skinID)) {
             return user.skins;
-        } else{
+        } else if(user.coins >= 100) {
             user.skins.push(skinID);
+            user.coins -= 100;
             await user.save();
             return user.skins;
         }
